@@ -5,6 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import Highcharts from 'react-highcharts/ReactHighstock.src';
+import Spinner from '../spinner.gif';
 
 class App extends Component {
 
@@ -34,7 +35,8 @@ class App extends Component {
 
   handleSubmit(){
     if(this.state.startDate && this.state.endDate){
-      moment().format('L');
+      // moment().format('L');
+      this.setState({loading: true});
       axios({
         method:'get',
         url:`http://104.197.128.152/data/adrequests?from=${moment(this.state.startDate._d).format("YYYY-MM-DD")}&to=${moment(this.state.endDate._d).format("YYYY-MM-DD")}`,
@@ -46,12 +48,12 @@ class App extends Component {
             data.map((newData, index)=>{
               newArray.push([new Date(newData.date).getTime(), newData.adrequest]);
             })
-            this.setState({showChart: true, data: newArray});
+            this.setState({showChart: true, data: newArray, loading: false});
           }else{
-            this.setState({showError: true, errorLabel: 'Data not available'});
+            this.setState({showError: true, errorLabel: 'Data not available', loading: false});
           }
         }else{
-          this.setState({showError: true, errorLabel: response.statusText});
+          this.setState({showError: true, errorLabel: response.statusText, loading: false});
         }
       });
     }
@@ -115,6 +117,9 @@ class App extends Component {
           </div>}
           {this.state.showError && <div style={{textAlign: 'center'}}>
             <h2>{this.state.errorLabel}</h2>
+          </div>}
+          {this.state.loading && <div style={{textAlign: 'center'}}>
+            <img src={Spinner} />
           </div>}
         </div>
       </div>
