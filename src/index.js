@@ -41,13 +41,17 @@ class App extends Component {
       }).then((response)=> {
         if(response.status == 200){
           let { data } = response.data;
-          let newArray = [];
-          data.map((newData, index)=>{
-            newArray.push([new Date(newData.date).getTime(), newData.adrequest]);
-          })
-          this.setState({showChart: true, data: newArray});
+          if(data){
+            let newArray = [];
+            data.map((newData, index)=>{
+              newArray.push([new Date(newData.date).getTime(), newData.adrequest]);
+            })
+            this.setState({showChart: true, data: newArray});
+          }else{
+            this.setState({showError: true, errorLabel: 'Data not available'});
+          }
         }else{
-          this.setState({showError: true});
+          this.setState({showError: true, errorLabel: response.statusText});
         }
       });
     }
@@ -71,9 +75,6 @@ class App extends Component {
     };
     return(
       <div style={{margin: 10, padding: 10}}>
-        <div style={{textAlign: 'center'}}>
-          <h2>Greedygames Test</h2>
-        </div>
         <div style={{display: 'inline-block', marginRight: 100}}>
           <span style={{marginRight: 15}}>From Date</span>
           <div style={{display: 'inline-block'}}>
@@ -102,7 +103,9 @@ class App extends Component {
         <div style={{display: 'inline-block'}}>
           <button
             onClick={this.handleSubmit}
-            disabled={this.state.startDate?this.state.endDate?false:true:true}>
+            disabled={this.state.startDate?this.state.endDate?false:true:true}
+            title={this.state.startDate?this.state.endDate?'':'Select both dates':'Select both dates'}
+            >
             Submit
           </button>
         </div>
@@ -111,7 +114,7 @@ class App extends Component {
             <Highcharts config={config}/>
           </div>}
           {this.state.showError && <div style={{textAlign: 'center'}}>
-            <h2>Data not available</h2>
+            <h2>{this.state.errorLabel}</h2>
           </div>}
         </div>
       </div>
