@@ -4,7 +4,7 @@
   "description": "test",
   "main": "./src/index.js",
   "scripts": {
-    "watch": "webpack-dev-server --content-base ./"
+    "start": "webpack-dev-server --content-base ./"
   },
   "author": "jaisonka91@gmail.com",
   "license": "ISC",
