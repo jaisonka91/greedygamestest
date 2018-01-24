@@ -55,6 +55,8 @@ class App extends Component {
         }else{
           this.setState({showError: true, errorLabel: response.statusText, loading: false});
         }
+      }).catch((err)=>{
+        this.setState({showError: true, errorLabel: 'Network unreachable', loading: false});
       });
     }
   }
@@ -77,9 +79,9 @@ class App extends Component {
     };
     return(
       <div style={{margin: 10, padding: 10}}>
-        <div style={{display: 'inline-block', marginRight: 100}}>
+        <div className='dateDiv' style={{display: 'inline-block', marginRight: 100}}>
           <span style={{marginRight: 15}}>From Date</span>
-          <div style={{display: 'inline-block'}}>
+          <div style={{display: 'inline-block', padding: 10}}>
             <DatePicker
               placeholderText="Select start date"
               selected={this.state.startDate}
@@ -89,9 +91,9 @@ class App extends Component {
             />
           </div>
         </div>
-        <div style={{display: 'inline-block', marginRight: 100}}>
-          <span style={{marginRight: 15}}>To Date</span>
-          <div style={{display: 'inline-block'}}>
+        <div className='dateDiv' style={{display: 'inline-block', marginRight: 100}}>
+          <span className='toDate' style={{marginRight: 15}}>To Date</span>
+          <div style={{display: 'inline-block', padding: 10}}>
             <DatePicker
               placeholderText="Select end date"
               selected={this.state.endDate}
@@ -102,7 +104,7 @@ class App extends Component {
             />
           </div>
         </div>
-        <div style={{display: 'inline-block'}}>
+        <div className='submitButton' style={{display: 'inline-block'}}>
           <button
             onClick={this.handleSubmit}
             disabled={this.state.startDate?this.state.endDate?false:true:true}

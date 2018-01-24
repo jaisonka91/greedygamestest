@@ -17,3 +17,25 @@ button:disabled,
 button[disabled]{
   cursor: not-allowed;
 }
+/* @media(max-width: 480px){
+  .toDate{
+    margin-right: 32px !important;
+  }
+  .submitButton{
+    margin-left: 132px;
+    margin-top: 5px;
+  }
+}
+
+@media(max-width: 710px){
+  .dateDiv{
+    margin-right: 50px !important;
+  }
+  /* .toDate{
+    margin-right: 32px !important;
+  }
+  .submitButton{
+    margin-left: 132px;
+    margin-top: 5px;
+  } */
+} */
