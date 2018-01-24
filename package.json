@@ -1,0 +1,31 @@
+{
+  "name": "greedygames",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "./src/index.js",
+  "scripts": {
+    "watch": "webpack-dev-server --content-base ./"
+  },
+  "author": "jaisonka91@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.34",
+    "@babel/preset-env": "^7.0.0-beta.34",
+    "@babel/preset-es2015": "^7.0.0-beta.34",
+    "@babel/preset-react": "^7.0.0-beta.34",
+    "axios": "^0.17.1",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-watch": "^2.0.7",
+    "moment": "^2.20.1",
+    "react": "^16.2.0",
+    "react-datepicker": "^1.0.4",
+    "react-dom": "^16.2.0",
+    "react-highcharts": "^16.0.1",
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.9",
+    "style-loader": "^0.19.1",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
