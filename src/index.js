@@ -39,7 +39,7 @@ class App extends Component {
       this.setState({loading: true});
       axios({
         method:'get',
-        url:`http://104.197.128.152/data/adrequests?from=${moment(this.state.startDate._d).format("YYYY-MM-DD")}&to=${moment(this.state.endDate._d).format("YYYY-MM-DD")}`,
+        url:`https://f8966041.ngrok.io/data/adrequests?from=${moment(this.state.startDate._d).format("YYYY-MM-DD")}&to=${moment(this.state.endDate._d).format("YYYY-MM-DD")}`,
       }).then((response)=> {
         if(response.status == 200){
           let { data } = response.data;
